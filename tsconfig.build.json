@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "module": "commonjs",
+      "sourceMap": true,
+      "outDir": "./dist",
+      "noEmit": false
+    },
+    "exclude": [
+      "src/**/__tests__/**"
+    ],
+    "include": [
+      "src/**/*"
+    ]
+  }
