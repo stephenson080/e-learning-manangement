@@ -1,0 +1,23 @@
+.login-form {
+    width: 25rem;
+    max-width: 90%;
+    margin: 3rem auto;
+    display: block;
+    background-color: white;
+    padding: 15px;
+    box-shadow: -8px -8px 16px 2px rgba(0, 0, 0, 0.05),
+        8px 8px 16px 2px rgba(0, 0, 0, 0.05);
+}
+
+.login-form h3 {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    font: inherit;
+    text-align: center;
+}
+
+.login-form label sup{
+    font-size: 14px !important;
+    font: inherit;
+    color: red;
+}

@@ -1,0 +1,140 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navbar.ejs') %>
+
+    <main id="body">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'staffs')" id="defaultOpen">Staffs</button>
+            <button class="tablinks" onclick="openCity(event, 'students')">Students</button>
+        </div>
+
+        <div id="staffs" class="tabcontent">
+            <div class="tab-header">
+              <h3>Staffs</h3>
+              <div>
+                <button id="add-staff" class="btn">
+                  Add Staff
+                </button>
+              </div>
+              
+            </div>
+            <% if (staffs.length > 0) { %>
+              <div class="grid">
+                  <% for (let staff of staffs) { %>
+                      <article class="card product-item">
+                          <header class="card__header">
+                              <h1 class="product__title">
+                                 Name: <%= staff.name %>
+                              </h1>
+                          </header>
+                          <div class="card__image">
+                              <img src="/img/staff_avatar.png" alt="<%= staff.name %>">
+                          </div>
+                          <div class="card__content">
+                              <h2 class="product__price">
+                                Reg No.:  <%= staff.regNo %>
+                              </h2>
+                              <p class="product__description">
+                                Department  <%= staff.department.name %>
+                              </p>
+                          </div>
+                          <div class="card__actions">
+                              <a class="btn">Manage</a>
+                              <button class="btn" type="button" >Delete</button>
+                          </div>
+                      </article>
+                      <% } %>
+              </div>
+              <% } else { %>
+                  <h1>No Staff Found!</h1>
+              <% } %>
+          </div>
+          
+          <div id="students" class="tabcontent">
+            <h3>Students</h3>
+            <% if (students.length > 0) { %>
+              <div class="grid">
+                  <% for (let student of students) { %>
+                      <article class="card product-item">
+                          <header class="card__header">
+                              <h1 class="product__title">
+                                 Name: <%= student.name %>
+                              </h1>
+                          </header>
+                          <div class="card__image">
+                              <img src="/img/staff_avatar.png" alt="<%= student.name %>">
+                          </div>
+                          <div class="card__content">
+                              <h2 class="product__price">
+                                Reg No.:  <%= student.regNo %>
+                              </h2>
+                              <p class="product__description">
+                                Department  <%= student.department.name %>
+                              </p>
+                          </div>
+                          <div class="card__actions">
+                              <a class="btn">Manage</a>
+                              <button class="btn" type="button" >Delete</button>
+                          </div>
+                      </article>
+                      <% } %>
+              </div>
+              <% } else { %>
+                  <h1>No Student Found!</h1>
+              <% } %>
+          </div>
+
+          <div id="add-staff-modal" class="modal">
+            
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3>Add Staff</h3>
+                <span class="close">&times;</span>
+              </div>
+              <p class="form-details">Add New Staff...</p>  
+              <div class="form-control">
+                <label for="name">Name<sup>*</sup></label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                />
+              </div>
+              <div class="form-control">
+                <label for="regNo">Reg No<sup>*</sup></label>
+                <input 
+                    type="text" 
+                    name="regNo" 
+                    id="regNo" 
+                />
+              </div>
+              <div class="form-control">
+                <label for="department">Department<sup>*</sup></label>
+                <select name="department" id="department">
+                    <option value="">Select Department</option>
+                    <% for (let dep of departments) { %>
+                        <option value="<%= dep._id %>"><%= dep.code %></option>
+                    <% } %>
+                </select>
+              </div>
+              <div class="form-control">
+                <label for="level">Level<sup>*</sup></label>
+                <select name="level" id="level">
+                    <option value="">Select Level</option>
+                    <% for (let level of levels) { %>
+                    <option value="<%= level._id %>"><%= level.name %> Level</option>
+                    <% } %>
+                </select>
+              </div>
+              <button class="btn">Add Staff</button>
+            </div>
+          </div>
+    </main>
+
+    <script src="/js/helpers.js"></script>
+<%- include('../includes/end.ejs') %>

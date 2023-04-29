@@ -4,7 +4,9 @@ if (process.env.NODE_ENV !== "production") {
 }
 async function connectDatabase(){
     try {
+        console.log('Connecting to DB...')
         await Mongoose.connect(process.env.DB_CONNECTION as string) 
+        console.log('DB connected')
     } catch (error) {
         throw error
     }

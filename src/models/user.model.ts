@@ -1,5 +1,5 @@
 import {Types, Schema, model} from 'mongoose'
-import { Role } from '~/utils/types';
+import { Role } from '../utils/types';
 
 interface IUser {
     name: string;
@@ -17,7 +17,7 @@ const userSchema = new Schema<IUser>({
     // And `Schema.Types.ObjectId` in the schema definition.
     role: { type: String, default: Role.USER  },
     level: { type: Schema.Types.ObjectId, ref: 'levels' },
-    department: { type: Schema.Types.ObjectId, ref: 'departments' }
+    department: { type: Schema.Types.ObjectId, ref: 'department' }
 });
 
 const User = model<IUser>('users', userSchema);

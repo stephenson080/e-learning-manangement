@@ -1,0 +1,68 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navbar.ejs') %>
+
+    <main>
+        <% if (errorMessage) { %>
+            <div class="user-message<%= error ? 'user-message--error' : ''%>"><%= errorMessage %></div>
+        <% } %>    
+        <form action="/auth/signup" method="post" class="login-form" >
+            <h3>Account Signup</h3>
+            <div class="form-control">
+                <label for="name">Name<sup>*</sup></label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    class="<%= error ? 'invalid' : ''%>"
+                />
+            </div>
+            <div class="form-control">
+                <label for="regNo">Reg No<sup>*</sup></label>
+                <input 
+                    type="text" 
+                    name="regNo" 
+                    id="regNo" 
+                    class="<%= error ? 'invalid' : ''%>"
+                />
+            </div>
+            <div class="form-control">
+                <label for="department">Department<sup>*</sup></label>
+                <select name="department" id="department">
+                    <option value="">Select Department</option>
+                    <% for (let dep of departments) { %>
+                        <option value="<%= dep._id %>"><%= dep.code %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="level">Level<sup>*</sup></label>
+                <select name="level" id="level">
+                    <option value="">Select Level</option>
+                    <% for (let level of levels) { %>
+                    <option value="<%= level._id %>"><%= level.name %> Level</option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="password">Password<sup>*</sup></label>
+                <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                class="<%= error ? 'invalid' : ''%>"
+            />
+            </div>
+            <button type="submit" class="btn">Sign up</button>
+        </form>
+        <div class="centered">
+            <a class="link" href="/auth/login">Login</a>
+        </div>
+    </main>
+
+    <script src="/js/auth.js"></script>
+<%- include('../includes/end.ejs') %>
