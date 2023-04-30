@@ -24,6 +24,7 @@ export function getLoginPage(req: Request, res: Response) {
     admin: false,
     staff: false,
     user: false,
+    token: ''
   });
 }
 
@@ -64,6 +65,7 @@ export async function getSignUpPage(req: Request, res: Response) {
     admin: false,
     staff: false,
     user: false,
+    token: ''
   });
 }
 
@@ -85,6 +87,7 @@ export async function signUpUser(req: Request, res: Response) {
       admin: false,
       staff: false,
       user: false,
+      token: ''
     });
     // res.json({
     //     message: "Registration Successful!"
@@ -102,6 +105,7 @@ export async function signUpUser(req: Request, res: Response) {
       admin: false,
       staff: false,
       user: false,
+      token: ''
     });
   }
 }

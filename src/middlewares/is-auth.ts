@@ -15,6 +15,7 @@ export function isAdmin(req: Request, res: Response, next: NextFunction) {
         admin: false,
         staff: false,
         user: false,
+        token: ''
       });
       return;
     }
@@ -29,6 +30,7 @@ export function isAdmin(req: Request, res: Response, next: NextFunction) {
         admin: false,
         staff: false,
         user: false,
+        token: ''
       });
       return;
     }
@@ -43,6 +45,7 @@ export function isAdmin(req: Request, res: Response, next: NextFunction) {
         admin: false,
         staff: false,
         user: false,
+        token: ''
       });
     if (user.role !== Role.ADMIN)
       return res.render("auth/login", {
@@ -54,6 +57,7 @@ export function isAdmin(req: Request, res: Response, next: NextFunction) {
         admin: false,
         staff: false,
         user: false,
+        token: ''
       });
     next();
   } catch (error) {
@@ -66,6 +70,7 @@ export function isAdmin(req: Request, res: Response, next: NextFunction) {
       admin: false,
       staff: false,
       user: false,
+      token: ''
     });
   }
 }

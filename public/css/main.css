@@ -368,3 +368,9 @@ form {
   text-decoration: none;
   cursor: pointer;
 }
+
+.container{
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 1000px;
+}

@@ -12,7 +12,7 @@ const courseSchema = new Schema<ICourse>({
     name: { type: String, required: true },
     code: { type: String, required: true },
     level: { type: Schema.Types.ObjectId, ref: 'levels' },
-    department: { type: Schema.Types.ObjectId, ref: 'departments' },
+    department: { type: Schema.Types.ObjectId, ref: 'department' },
     semester: { type: Schema.Types.ObjectId, ref: 'semesters' }
 });
 

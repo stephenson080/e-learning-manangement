@@ -18,6 +18,7 @@
   border-radius: 2px;
   padding: 10px 8px;
   background-color: #fafafa;
+  color: black !important;
 }
 
 .form-control input:focus,
@@ -29,6 +30,10 @@
 .form-control select.invalid,
 .form-control textarea.invalid{
   border-color: red;
+}
+
+.f-6 {
+  width: 50% !important;
 }
 
 .tab {
@@ -71,7 +76,7 @@
   max-width: 780px;
   margin: 0 auto;
 }
-.tabcontent .tab-header{
+.tab-header{
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -79,6 +84,31 @@
   justify-content: space-between;
 }
 
-.tabcontent .tab-header div {
+.tab-header div {
   width: 20%;
+}
+
+.select-criteria{
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  margin: 1rem auto;
+  padding: 15px
+}
+
+.select-criteria h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.row-2 {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }

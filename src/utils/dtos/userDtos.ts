@@ -13,6 +13,11 @@ export interface CreateStaffDto {
     department: string
 }
 
+export interface AssignStaffCourseDto {
+    staff: string;
+    course: string;
+}
+
 export interface LoginUserDto {
     regNo: string;
     password: string

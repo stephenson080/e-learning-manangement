@@ -1,0 +1,120 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navbar.ejs') %>
+
+    <main id="body">
+      <div class="container">
+        <div class="tab-header">
+          <h3>Courses</h3>
+          <div>
+            <button id="add-staff" class="btn">
+              Add Course
+            </button>
+          </div>
+        </div>
+        <div class="select-criteria">
+          <div class="form-control">
+            <label for="department">Department<sup>*</sup></label>
+            <select name="department" id="department">
+              <option value="">Select Department</option>
+              <% for (let dep of departments) { %>
+                  <option value="<%= dep._id %>"><%= dep.name %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="row">
+            <div class="form-control f-6">
+              <label for="level">Level<sup>*</sup></label>
+              <select name="level" id="level">
+                <option value="">Select Level</option>
+                <% for (let level of levels) { %>
+                    <option value="<%= level._id %>"><%= level.name %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="form-control f-6">
+              <label for="semester">Semester<sup>*</sup></label>
+              <select name="semester" id="semester">
+                <option value="">Select Semester</option>
+                <% for (let sem of semesters) { %>
+                    <option value="<%= sem._id %>"><%= sem.name %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          <button onclick="getCourse()" id="search" class="btn">Search</button>
+        </div>
+
+        <div id="items" class="grid">
+
+        </div>
+
+        <div id="add-staff-modal" class="modal">
+                
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Add Course</h3>
+              <span class="close">&times;</span>
+            </div>
+            <p class="form-details">Add New Course...</p>
+            <div class="row">
+              <div class="form-control f-6">
+                <label for="name">Name<sup>*</sup></label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                />
+              </div>
+              <div class="form-control f-6">
+                <label for="code">Code<sup>*</sup></label>
+                <input 
+                    type="text" 
+                    name="code" 
+                    id="code" 
+                />
+              </div>
+            </div>  
+            <div class="form-control">
+              <label for="department">Department<sup>*</sup></label>
+              <select name="department" id="department-value">
+                <option value="">Select Department</option>
+                <% for (let dep of departments) { %>
+                    <option value="<%= dep._id %>"><%= dep.name %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="row">
+              <div class="form-control f-6">
+                <label for="level">Level<sup>*</sup></label>
+                <select name="level" id="level-value">
+                  <option value="">Select Level</option>
+                  <% for (let level of levels) { %>
+                      <option value="<%= level._id %>"><%= level.name %></option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="form-control f-6">
+                <label for="semester">Semester<sup>*</sup></label>
+                <select name="semester" id="semester-value">
+                  <option value="">Select Semester</option>
+                  <% for (let sem of semesters) { %>
+                      <option value="<%= sem._id %>"><%= sem.name %></option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+            <button id="add-course" onclick="addCourse()" class="btn">Add Course</button>
+          </div>    
+          
+      </div>  
+    </main>
+
+    <script src="/js/helpers.js"></script>
+    <script src="/js/admin.js"></script>
+<%- include('../includes/end.ejs') %>

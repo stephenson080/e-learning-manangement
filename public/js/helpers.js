@@ -27,8 +27,10 @@ function openCity(evt, cityName) {
 
    
   }
-
-  document.getElementById("defaultOpen").click();
+  const defaultOpen = document.getElementById("defaultOpen")
+  if (defaultOpen){
+    defaultOpen.click()
+  }
 
   
   // Get the modal

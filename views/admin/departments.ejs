@@ -1,0 +1,80 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navbar.ejs') %>
+
+    <main id="body">
+        <div class="container">
+            <div class="tab-header">
+                <h3>Departments</h3>
+                <div>
+                  <button id="add-staff" class="btn">
+                    Add Department
+                  </button>
+                </div>
+                
+              </div>
+               <% if (departments.length > 0) { %>
+                  <div class="grid">
+                      <% for (let dep of departments) { %>
+                          <article class="card product-item">
+                              <header class="card__header">
+                                  <h1 class="product__title">
+                                     Name: <%= dep.name %>
+                                  </h1>
+                              </header>
+                              <div class="card__content">
+                                  <h2 class="product__price">
+                                    Reg No.:  <%= dep.code %>
+                                  </h2>
+                              </div>
+                              <div class="card__actions">
+                                  <a class="btn">Manage</a>
+                                  <button class="btn" type="button" >Delete</button>
+                              </div>
+                          </article>
+                          <% } %>
+                  </div>
+                  <% } else { %>
+                      <h1>No Department Found!</h1>
+                  <% } %>
+    
+               <div id="add-staff-modal" class="modal">
+                
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3>Add Department</h3>
+                    <span class="close">&times;</span>
+                  </div>
+                  <p class="form-details">Add New Department...</p>  
+                  <div class="form-control">
+                    <label for="name">Name<sup>*</sup></label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name" 
+                    />
+                  </div>
+                  <div class="form-control">
+                    <label for="code">Code<sup>*</sup></label>
+                    <input 
+                        type="text" 
+                        name="code" 
+                        id="code" 
+                    />
+                  </div>
+                  <button id="add-department" onclick="addDepartment()" class="btn">Add Department</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <script src="/js/helpers.js"></script>
+    <script src="/js/admin.js"></script>
+<%- include('../includes/end.ejs') %>

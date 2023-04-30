@@ -8,27 +8,27 @@
             </li>
             <% if (admin) { %>
                 <li class="main-header__item">
-                    <a class="<%= path === 'users' ? 'active' : '' %>" href="/admin/">Users</a>
+                    <a class="<%= path === 'users' ? 'active' : '' %>" href="/admin?token=<%= token  %>">Users</a>
                 </li>
                 <li class="main-header__item">
-                    <a class="<%= path === 'departments' ? 'active' : '' %>" href="/admin/departments">Departments</a>
+                    <a class="<%= path === 'departments' ? 'active' : '' %>" href="/admin/departments?token=<%= token  %>">Departments</a>
                 </li>
                 <li class="main-header__item">
-                    <a class="<%= path === 'courses' ? 'active' : '' %>" href="/admin/courses">Courses</a>
+                    <a class="<%= path === 'courses' ? 'active' : '' %>" href="/admin/courses?token=<%= token  %>">Courses</a>
                 </li>
             <% } %>
             <% if (staff) { %>
                 <li class="main-header__item">
-                    <a class="<%= path === 'courses' ? 'active' : '' %>" href="/staff/materials">Courses</a>
+                    <a class="<%= path === 'courses' ? 'active' : '' %>" href="/staff/materials?token=<%= token  %>">Courses</a>
                 </li>
                 <li class="main-header__item">
-                    <a class="<%= path === 'materials' ? 'active' : '' %>" href="/staff/">Materials</a>
+                    <a class="<%= path === 'materials' ? 'active' : '' %>" href="/staff?token=<%= token  %>">Materials</a>
                 </li>
                 
             <% } %>  
             <% if (user) {%>
                 <li class="main-header__item">
-                    <a class="<%= path === 'materials' ? 'active' : '' %>" href="/user/materials">Material</a>
+                    <a class="<%= path === 'materials' ? 'active' : '' %>" href="/user/materials?token=<%= token  %>">Material</a>
                 </li>
             <% } %>
         </ul>
@@ -58,27 +58,27 @@
         </li>
         <% if (admin) { %>
             <li class="main-header__item">
-                <a class="<%= path === 'users' ? 'active' : '' %>" href="/admin/">Users</a>
+                <a class="<%= path === 'users' ? 'active' : '' %>" href="/admin?token=<%= token  %>">Users</a>
             </li>
             <li class="main-header__item">
-                <a class="<%= path === 'departments' ? 'active' : '' %>" href="/admin/departments">Departments</a>
+                <a class="<%= path === 'departments' ? 'active' : '' %>" href="/admin/departments?token=<%= token  %>">Departments</a>
             </li>
             <li class="main-header__item">
-                <a class="<%= path === 'courses' ? 'active' : '' %>" href="/admin/courses">Courses</a>
+                <a class="<%= path === 'courses' ? 'active' : '' %>" href="/admin/courses?token=<%= token  %>">Courses</a>
             </li>
         <% } %>
         <% if (staff) { %>
             <li class="main-header__item">
-                <a class="<%= path === 'courses' ? 'active' : '' %>" href="/staff/materials">Courses</a>
+                <a class="<%= path === 'courses' ? 'active' : '' %>" href="/staff/materials?token=<%= token  %>">Courses</a>
             </li>
             <li class="main-header__item">
-                <a class="<%= path === 'materials' ? 'active' : '' %>" href="/staff/">Materials</a>
+                <a class="<%= path === 'materials' ? 'active' : '' %>" href="/staff?token=<%= token  %>">Materials</a>
             </li>
             
         <% } %>  
         <% if (user) {%>
             <li class="main-header__item">
-                <a class="<%= path === 'materials' ? 'active' : '' %>" href="/user/materials">Material</a>
+                <a class="<%= path === 'materials' ? 'active' : '' %>" href="/user/materials?token=<%= token  %>">Material</a>
             </li>
         <% } %>
         <% if (!isLoggedIn) { %>
