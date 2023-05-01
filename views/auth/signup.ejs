@@ -10,7 +10,7 @@
         <% if (error) { %>
             <div class="user-message user-message--error"><%= errorMessage %></div>
         <% } else { %>
-            <div class="user-message"><%= errorMessage %></div>
+            <div class="<%= errorMessage ? 'user-message' : '' %>"><%= errorMessage %></div>
         <% } %>     
         <form action="/auth/signup" method="post" class="login-form" >
             <h3>Account Signup</h3>
