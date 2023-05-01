@@ -55,9 +55,9 @@ export default class App {
 
   async start() {
     try {
-      // this.app.get("/", (_req, _res) => {
-      //   _res.send("TypeScript With Express");
-      // });
+      this.app.get("/", (_req, _res) => {
+        _res.redirect('/auth/login')
+      });
       await connectDatabase()
       // await seedRecords()
       this.app.listen(this.PORT, () => {

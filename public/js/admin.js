@@ -1,150 +1,168 @@
-const BASEURL = 'http://localhost:3030'
+// const BASEURL = 'http://localhost:3030'
+const BASEURL = 'https://e-learning-manangement-production.up.railway.app'
 
 let currentCourse = ''
 
 async function addStaff() {
     const btn = document.getElementById('add-staff')
-    btn.innerHTML = 'Loading...'
-    const regNo = document.getElementById('regNo').value
-    const name = document.getElementById('name').value
-    const department = document.getElementById('department').value
-    const level = document.getElementById('level').value
-    const token = localStorage.getItem('token')
-    if (!token) {
+    try {
+        btn.innerHTML = 'Loading...'
+        const regNo = document.getElementById('regNo').value
+        const name = document.getElementById('name').value
+        const department = document.getElementById('department').value
+        const level = document.getElementById('level').value
+        const token = localStorage.getItem('token')
+        if (!token) {
 
-        btn.innerHTML = 'Add Staff'
-        alert('Not Authorised!')
-        return
-    }
-    const res = await fetch(`${BASEURL}/admin/add-staff?token=${token}`, {
-        method: 'POST',
-        body: JSON.stringify({ regNo, name, department, level }),
-        headers: {
-            'Content-Type': 'application/json'
+            btn.innerHTML = 'Add Staff'
+            alert('Not Authorised!')
+            return
         }
-    })
-    if (!res.ok) {
-        console.log('Something went wrong')
-        alert('Something went wrong')
-        btn.innerHTML = 'Add Staff'
-        return
-    }
-    const resData = await res.json()
-    if (!resData.status) {
+        const res = await fetch(`${BASEURL}/admin/add-staff?token=${token}`, {
+            method: 'POST',
+            body: JSON.stringify({ regNo, name, department, level }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (!res.ok) {
+            console.log('Something went wrong')
+            alert('Something went wrong')
+            btn.innerHTML = 'Add Staff'
+            return
+        }
+        const resData = await res.json()
+        if (!resData.status) {
+            btn.innerHTML = 'Add Staff'
+            alert(resData.message)
+            return
+        }
         btn.innerHTML = 'Add Staff'
         alert(resData.message)
-        return
+    } catch (err) {
+        btn.innerHTML = 'Add Staff'
+        alert('Something went wrong')
     }
-    btn.innerHTML = 'Add Staff'
-    alert(resData.message)
-
-
 }
 
 async function addDepartment() {
     const btn = document.getElementById('add-department')
-    btn.innerHTML = 'Loading...'
-    const code = document.getElementById('code').value
-    const name = document.getElementById('name').value
-    const token = localStorage.getItem('token')
-    if (!token) {
+    try {
+        btn.innerHTML = 'Loading...'
+        const code = document.getElementById('code').value
+        const name = document.getElementById('name').value
+        const token = localStorage.getItem('token')
+        if (!token) {
 
-        btn.innerHTML = 'Add Department'
-        alert('Not Authorised!')
-        return
-    }
-    const res = await fetch(`${BASEURL}/admin/add-department?token=${token}`, {
-        method: 'POST',
-        body: JSON.stringify({ name, code }),
-        headers: {
-            'Content-Type': 'application/json'
+            btn.innerHTML = 'Add Department'
+            alert('Not Authorised!')
+            return
         }
-    })
-    if (!res.ok) {
-        console.log('Something went wrong')
-        alert('Something went wrong')
-        btn.innerHTML = 'Add Department'
-        return
-    }
-    const resData = await res.json()
-    if (!resData.status) {
+        const res = await fetch(`${BASEURL}/admin/add-department?token=${token}`, {
+            method: 'POST',
+            body: JSON.stringify({ name, code }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (!res.ok) {
+            console.log('Something went wrong')
+            alert('Something went wrong')
+            btn.innerHTML = 'Add Department'
+            return
+        }
+        const resData = await res.json()
+        if (!resData.status) {
+            btn.innerHTML = 'Add Department'
+            alert(resData.message)
+            return
+        }
         btn.innerHTML = 'Add Department'
         alert(resData.message)
-        return
+    } catch (error) {
+        btn.innerHTML = 'Add Department'
+        alert('Something went wrong')
     }
-    btn.innerHTML = 'Add Department'
-    alert(resData.message)
+
 
 
 }
 
 async function addCourse() {
     const btn = document.getElementById('add-course')
-    btn.innerHTML = 'Loading...'
-    const code = document.getElementById('code').value
-    const name = document.getElementById('name').value
-    const department = document.getElementById('department-value').value
-    const level = document.getElementById('level-value').value
-    const semester = document.getElementById('semester-value').value
-    const token = localStorage.getItem('token')
-    if (!token) {
+    try {
+        btn.innerHTML = 'Loading...'
+        const code = document.getElementById('code').value
+        const name = document.getElementById('name').value
+        const department = document.getElementById('department-value').value
+        const level = document.getElementById('level-value').value
+        const semester = document.getElementById('semester-value').value
+        const token = localStorage.getItem('token')
+        if (!token) {
 
-        btn.innerHTML = 'Add Course'
-        alert('Not Authorised!')
-        return
-    }
-    const res = await fetch(`${BASEURL}/admin/add-course?token=${token}`, {
-        method: 'POST',
-        body: JSON.stringify({ name, code, department, semester, level }),
-        headers: {
-            'Content-Type': 'application/json'
+            btn.innerHTML = 'Add Course'
+            alert('Not Authorised!')
+            return
         }
-    })
-    if (!res.ok) {
-        console.log('Something went wrong')
-        alert('Something went wrong')
-        btn.innerHTML = 'Add Course'
-        return
-    }
-    const resData = await res.json()
-    if (!resData.status) {
+        const res = await fetch(`${BASEURL}/admin/add-course?token=${token}`, {
+            method: 'POST',
+            body: JSON.stringify({ name, code, department, semester, level }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (!res.ok) {
+            console.log('Something went wrong')
+            alert('Something went wrong')
+            btn.innerHTML = 'Add Course'
+            return
+        }
+        const resData = await res.json()
+        if (!resData.status) {
+            btn.innerHTML = 'Add Course'
+            alert(resData.message)
+            return
+        }
         btn.innerHTML = 'Add Course'
         alert(resData.message)
-        return
+    } catch (error) {
+        btn.innerHTML = 'Add Course'
+        alert('Something went wrong')
     }
-    btn.innerHTML = 'Add Course'
-    alert(resData.message)
-
-
 }
 
 
 async function getCourse() {
     const btn = document.getElementById('search')
-    btn.innerHTML = 'Loading...'
-    const department = document.getElementById('department').value
-    const level = document.getElementById('level').value
-    const semester = document.getElementById('semester').value
-    const token = localStorage.getItem('token')
-    if (!token) {
+    try {
+        btn.innerHTML = 'Loading...'
+        const department = document.getElementById('department').value
+        const level = document.getElementById('level').value
+        const semester = document.getElementById('semester').value
+        const token = localStorage.getItem('token')
+        if (!token) {
 
-        btn.innerHTML = 'Search'
-        alert('Not Authorised!')
-        return
-    }
-    const res = await fetch(`${BASEURL}/admin/get-courses?token=${token}&department=${department}&semester=${semester}&level=${level}`, {
-        headers: {
-            'Content-Type': 'application/json'
+            btn.innerHTML = 'Search'
+            alert('Not Authorised!')
+            return
         }
-    })
-    if (!res.ok) {
+        const res = await fetch(`${BASEURL}/admin/get-courses?token=${token}&department=${department}&semester=${semester}&level=${level}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (!res.ok) {
+            btn.innerHTML = 'Search'
+            return
+        }
+        const resData = await res.json()
+        console.log(resData)
+        addCoursesCard(resData.courses)
         btn.innerHTML = 'Search'
-        return
+    } catch (error) {
+        btn.innerHTML = 'Search'
+        alert('Something went wrong')
     }
-    const resData = await res.json()
-    console.log(resData)
-    addCoursesCard(resData.courses)
-    btn.innerHTML = 'Search'
 
 }
 
@@ -214,7 +232,7 @@ function getAddMaterialModal(materialBtn) {
     const span = document.getElementsByClassName("close")[0];
 
     materialModal.style.display = 'block'
-    
+
     span.onclick = function () {
         materialModal.style.display = "none";
     }
@@ -230,79 +248,84 @@ function getAddMaterialModal(materialBtn) {
 
 async function assignStaff() {
     const btn = document.getElementById('assign-staff')
-    btn.innerHTML = 'Loading...'
-    const staff = document.getElementById('staff-value').value
-    const token = localStorage.getItem('token')
-    if (!token) {
+    try {
+        btn.innerHTML = 'Loading...'
+        const staff = document.getElementById('staff-value').value
+        const token = localStorage.getItem('token')
+        if (!token) {
 
-        btn.innerHTML = 'Assign Staff'
-        alert('Not Authorised!')
-        return
-    }
-    const res = await fetch(`${BASEURL}/admin/assign-staff?token=${token}`, {
-        method: 'POST',
-        body: JSON.stringify({staff, course: currentCourse }),
-        headers: {
-            'Content-Type': 'application/json'
+            btn.innerHTML = 'Assign Staff'
+            alert('Not Authorised!')
+            return
         }
-    })
-    if (!res.ok) {
-        console.log('Something went wrong')
-        alert('Something went wrong')
-        btn.innerHTML = 'Assign Staff'
-        return
-    }
-    const resData = await res.json()
-    if (!resData.status) {
+        const res = await fetch(`${BASEURL}/admin/assign-staff?token=${token}`, {
+            method: 'POST',
+            body: JSON.stringify({ staff, course: currentCourse }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (!res.ok) {
+            console.log('Something went wrong')
+            alert('Something went wrong')
+            btn.innerHTML = 'Assign Staff'
+            return
+        }
+        const resData = await res.json()
+        if (!resData.status) {
+            btn.innerHTML = 'Assign Staff'
+            alert(resData.message)
+            return
+        }
         btn.innerHTML = 'Assign Staff'
         alert(resData.message)
-        return
+    } catch (error) {
+        btn.innerHTML = 'Assign Staff'
+        alert('Something went wrong')
     }
-    btn.innerHTML = 'Assign Staff'
-    alert(resData.message)
-
-
 }
 
 async function addMaterial() {
     const btn = document.getElementById('add-material')
-    btn.innerHTML = 'Loading...'
-    const files = document.getElementById('material-value')
-    console.log(files.files)
-    const token = localStorage.getItem('token')
-    if (!token) {
+    try {
+        btn.innerHTML = 'Loading...'
+        const files = document.getElementById('material-value')
+        const token = localStorage.getItem('token')
+        if (!token) {
 
-        btn.innerHTML = 'Add Material'
-        alert('Not Authorised!')
-        return
-    }
-    const formData = new FormData()
-    formData.append('file', files.files[0])
-    formData.append('course', currentCourse)
-    const res = await fetch(`${BASEURL}/admin/add-material?token=${token}`, {
-        method: 'POST',
-        body: formData,
-        // headers: {
-        //     'Content-Type': 'multipart/form-data'
-        // }
-    })
-    if (!res.ok) {
-        console.log('Something went wrong')
-        
-        alert('Something went wrong')
-        btn.innerHTML = 'Add Material'
-        return
-    }
-    const resData = await res.json()
-    if (!resData.status) {
+            btn.innerHTML = 'Add Material'
+            alert('Not Authorised!')
+            return
+        }
+        const formData = new FormData()
+        formData.append('file', files.files[0])
+        formData.append('course', currentCourse)
+        const res = await fetch(`${BASEURL}/admin/add-material?token=${token}`, {
+            method: 'POST',
+            body: formData,
+            // headers: {
+            //     'Content-Type': 'multipart/form-data'
+            // }
+        })
+        if (!res.ok) {
+            console.log('Something went wrong')
+
+            alert('Something went wrong')
+            btn.innerHTML = 'Add Material'
+            return
+        }
+        const resData = await res.json()
+        if (!resData.status) {
+            btn.innerHTML = 'Add Material'
+            alert(resData.message)
+            return
+        }
         btn.innerHTML = 'Add Material'
         alert(resData.message)
-        return
+    } catch (error) {
+        btn.innerHTML = 'Add Material'
+        alert('Something went wrong')
     }
-    btn.innerHTML = 'Add Material'
-    alert(resData.message)
-
-
 }
 
 
