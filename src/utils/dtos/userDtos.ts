@@ -1,9 +1,12 @@
+import { Role } from "../types";
+
 export interface CreateUserDto {
     name: string;
     regNo: string;
     password: string
     level: string
     department: string
+    role: Role
 }
 
 export interface CreateStaffDto {

@@ -30,6 +30,18 @@ async function login() {
     localStorage.setItem('user', JSON.stringify(resData.user))
     if (resData.user.role === 'ADMIN'){
         location.replace(`/admin?token=${resData.token}`)
+        return
+    }
+    if (resData.user.role === 'USER'){
+        
+        location.replace(`/user?token=${resData.token}&level=${resData.user.level._id}`)
+        return
+    }
+
+    if (resData.user.role === 'STAFF'){
+        console.log(resData.user._id)
+        location.replace(`/staff?token=${resData.token}&level=${resData.user.level._id}&userId=${resData.user._id}`)
+        return
     }
     
 }

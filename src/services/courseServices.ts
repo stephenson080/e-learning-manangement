@@ -23,8 +23,12 @@ export default class CourseService {
   }
 
   async getCourse(key: string, value: string){
-      return await Course.findOne({[key]: value})
+      return await Course.findOne({[key]: value}).populate(['department', 'semester', 'level'])
   }
+
+  async getCourses(key: string, value: string){
+    return await Course.find({[key]: value}).populate(['department', 'semester', 'level'])
+}
 
   async getCoursesWithCriteria(getCoursesDto: GetCoursesDto){
     return await Course.find(getCoursesDto).populate(['department', 'semester', 'level'])

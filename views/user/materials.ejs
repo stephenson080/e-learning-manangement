@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navbar.ejs') %>
+
+    <main id="body">
+        <div class="container">
+            <div class="tab-header">
+                <h3><%= course.code %> Materials</h3>                
+            </div>
+            <% if (materials.length > 0) { %>
+                <div class="grid">
+                      <% for (let material of materials) { %>
+                          <article class="card product-item">
+                              <header class="card__header">
+                                  <h1 class="product__title">
+                                     Name: <%= course.name %>
+                                  </h1>
+                              </header>
+                              <div class="card__content">
+                                  <h2 class="product__price">
+                                    Name:  <%= material.url %>
+                                  </h2>
+                              </div>
+                              <div class="card__actions">
+                                  <a class="btn" href="/uploads/<%= material.url  %>"  >View Material </a>
+                              </div>
+                          </article>
+                          <% } %>
+                  </div>
+                  <% } else { %>
+                      <h1>No Material Found!</h1>
+                  <% } %>
+    
+               
+        </div>
+        
+    </main>
+
+    <script src="/js/helpers.js"></script>
+<%- include('../includes/end.ejs') %>

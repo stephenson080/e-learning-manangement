@@ -1,4 +1,4 @@
-import Course from "models/course";
+import Course from "../models/course";
 import Department from "../models/department";
 import Level from "../models/level";
 import User from "../models/user.model";
@@ -26,6 +26,7 @@ export default class UserService {
       level: createUserDto.level,
       password,
       regNo: createUserDto.regNo,
+      role: createUserDto.role
     });
     await newUser.save();
   }
@@ -56,7 +57,7 @@ export default class UserService {
   }
 
   async getUser(key: string, value: string) {
-    return await User.findOne({ [key]: value });
+    return await User.findOne({ [key]: value }).populate(["department", "level", "courses"]);
   }
 
   async assignStaffCourse(assignStaffCourseDto : AssignStaffCourseDto){
@@ -80,7 +81,14 @@ export default class UserService {
 
   }
 
-  async getAllUsers() {
-    return await User.find().populate(["department", "level", "courses"]);
+  async getAllUsers(role?: Role) {
+    if (!role){
+      return await User.find().populate(["department", "level", "courses"]);
+    }
+    return await User.find({role}).populate(["department", "level", "courses"]);
+  }
+
+  async getUsersBy(key: string, value: string) {
+    return await User.find({[key]: value}).populate(["department", "level", "courses"]);
   }
 }

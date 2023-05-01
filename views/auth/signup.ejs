@@ -7,9 +7,11 @@
    <%- include('../includes/navbar.ejs') %>
 
     <main>
-        <% if (errorMessage) { %>
-            <div class="user-message<%= error ? 'user-message--error' : ''%>"><%= errorMessage %></div>
-        <% } %>    
+        <% if (error) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } else { %>
+            <div class="user-message"><%= errorMessage %></div>
+        <% } %>     
         <form action="/auth/signup" method="post" class="login-form" >
             <h3>Account Signup</h3>
             <div class="form-control">
@@ -39,15 +41,26 @@
                     <% } %>
                 </select>
             </div>
-            <div class="form-control">
-                <label for="level">Level<sup>*</sup></label>
-                <select name="level" id="level">
-                    <option value="">Select Level</option>
-                    <% for (let level of levels) { %>
-                    <option value="<%= level._id %>"><%= level.name %> Level</option>
-                    <% } %>
-                </select>
+            <div class="row row-2">
+                <div class="form-control f-6">
+                    <label for="level">Level<sup>*</sup></label>
+                    <select name="level" id="level">
+                        <option value="">Select Level</option>
+                        <% for (let level of levels) { %>
+                        <option value="<%= level._id %>"><%= level.name %> Level</option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="form-control f-6">
+                    <label for="role">Role<sup>*</sup></label>
+                    <select name="role" id="role">
+                        <option value="">Select Role</option>
+                        <option value="USER">Student</option>
+                        <option value="STAFF">Staff</option>
+                    </select>
+                </div>
             </div>
+            
             <div class="form-control">
                 <label for="password">Password<sup>*</sup></label>
                 <input 
@@ -65,4 +78,5 @@
     </main>
 
     <script src="/js/auth.js"></script>
+    <script src="/js/helpers.js"></script>
 <%- include('../includes/end.ejs') %>

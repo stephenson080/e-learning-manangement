@@ -42,7 +42,7 @@ export async function loginUser(req: Request, res: Response) {
     );
     res.json({
       token,
-      user: trimUser(existUser),
+      user: existUser,
     });
   } catch (error: any) {
     res.json({
@@ -97,7 +97,7 @@ export async function signUpUser(req: Request, res: Response) {
     res.render("auth/signup", {
       path: "/signup",
       docTitle: "Sign up",
-      errorMessage: "Something went wrong",
+      errorMessage: error.message,
       error: true,
       isLoggedIn: false,
       departments,

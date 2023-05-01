@@ -1,11 +1,16 @@
 import express, { Application } from "express";
 import {join} from 'path'
 import {urlencoded, json} from 'body-parser'
+import multer from 'multer'
 
 import authRouter from "./routes/auth.route";
 import adminRouter from "./routes/admin.route";
+import userRouter from "./routes/user.route";
+import staffRouter from "./routes/staff.route";
 
 import connectDatabase from "./database/index.db";
+
+
 
 // import { seedRecords } from "./database/seedRecords";
 
@@ -24,13 +29,27 @@ export default class App {
 
     this.app.use(urlencoded({extended: false}))
     this.app.use(json())
+
+    const fileStorage = multer.diskStorage({
+      destination: (req,file,cb)=>{
+          cb(null, join(__dirname, '..', 'uploads'))
+      },
+      filename: (req,file,cb)=>{
+          cb(null, Date.now().toString() + "_" + file.originalname)
+      },
+    })
+
+    this.app.use(multer({storage: fileStorage, limits: {fileSize: 500000}, }).single("file"))
   
     this.app.use('/css', express.static(join(__dirname, '..', 'public', 'css')))
     this.app.use('/js', express.static(join(__dirname, '..', 'public', 'js')))
     this.app.use('/img', express.static(join(__dirname, '..', 'public', 'img')))
+    this.app.use('/uploads', express.static(join(__dirname, '..', 'uploads')))
 
     this.app.use('/auth', authRouter)
     this.app.use('/admin', adminRouter)
+    this.app.use('/user', userRouter)
+    this.app.use('/staff', staffRouter)
 
   }
 

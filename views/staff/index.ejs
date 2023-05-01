@@ -1,0 +1,54 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navbar.ejs') %>
+
+    <main id="body">
+        <div class="container">
+            <div class="tab-header">
+                <h3>Your Assigned Courses</h3>                
+            </div>
+            <% if (courses.length > 0) { %>
+                <div class="grid">
+                      <% for (let course of courses) { %>
+                          <article class="card product-item">
+                              <header class="card__header">
+                                  <h1 class="product__title">
+                                     Name: <%= course.name %>
+                                  </h1>
+                              </header>
+                              <div class="card__content">
+                                  <h2 class="product__price">
+                                    Reg No.:  <%= course.code %>
+                                  </h2>
+                                  <h2 class="product__price">
+                                    Name: <%= course.department.name %>
+                                  </h2>
+                                  <h2 class="product__price">
+                                    Level: <%= course.level.name %>
+                                  </h2>
+                                  <h2 class="product__price">
+                                    Semester: <%= course.semester.name %>
+                                  </h2>
+                              </div>
+                              <div class="card__actions">
+                                  <a href="/staff/get-course-materials?token=<%= token  %>&level=<%= level %>&course=<%= course._id %>" class="btn"  >View Materials </a>
+                              </div>
+                          </article>
+                          <% } %>
+                  </div>
+                  <% } else { %>
+                      <h1>No Course Found!</h1>
+                  <% } %>
+    
+               
+        </div>
+        
+    </main>
+
+    <script src="/js/helpers.js"></script>
+    <script src="/js/staff.js"></script>
+<%- include('../includes/end.ejs') %>

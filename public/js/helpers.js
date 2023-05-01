@@ -1,9 +1,36 @@
 const modal = document.getElementById("add-staff-modal");
+const logoutBtn = document.getElementById('logout')
+
+if (logoutBtn){
+  logoutBtn.addEventListener('click', function(){
+    localStorage.clear()
+    location.replace('/auth/login')
+  })
+}
 
 // Get the button that opens the modal
 const btn = document.getElementById("add-staff");
 
 const span = document.getElementsByClassName("close")[0];
+
+const backdrop = document.querySelector('.backdrop');
+const sideDrawer = document.querySelector('.mobile-nav');
+const menuToggle = document.querySelector('#side-menu-toggle');
+
+function backdropClickHandler() {
+  backdrop.style.display = 'none';
+  sideDrawer.classList.remove('open');
+}
+
+function menuToggleClickHandler() {
+  backdrop.style.display = 'block';
+  sideDrawer.classList.add('open');
+}
+
+backdrop.addEventListener('click', backdropClickHandler);
+menuToggle.addEventListener('click', menuToggleClickHandler);
+
+
 
 function openCity(evt, cityName) {
     // Declare all variables

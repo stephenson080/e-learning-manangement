@@ -4,7 +4,7 @@
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
             <li class="main-header__item">
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+                <button >App Name</button>
             </li>
             <% if (admin) { %>
                 <li class="main-header__item">
@@ -19,16 +19,13 @@
             <% } %>
             <% if (staff) { %>
                 <li class="main-header__item">
-                    <a class="<%= path === 'courses' ? 'active' : '' %>" href="/staff/materials?token=<%= token  %>">Courses</a>
-                </li>
-                <li class="main-header__item">
-                    <a class="<%= path === 'materials' ? 'active' : '' %>" href="/staff?token=<%= token  %>">Materials</a>
+                    <a class="<%= path === 'staff' ? 'active' : '' %>" href="/staff?token=<%= token  %>&level=<%= level %>$userId=<% userId %>">Courses</a>
                 </li>
                 
             <% } %>  
             <% if (user) {%>
                 <li class="main-header__item">
-                    <a class="<%= path === 'materials' ? 'active' : '' %>" href="/user/materials?token=<%= token  %>">Material</a>
+                    <a class="<%= path === 'user' ? 'active' : '' %>" href="/user?token=<%= token  %>&level=<%= level %>">Courses</a>
                 </li>
             <% } %>
         </ul>
@@ -42,9 +39,7 @@
                 </li>
             <% } else { %>
                 <li class="main-header__item">
-                    <form action="/logout" method="post">
-                        <button type="submit">Logout</button>
-                    </form>
+                    <button id="logout" type="submit">Logout</button>
                 </li>
             <% } %>
         </ul>
@@ -54,7 +49,7 @@
 <nav class="mobile-nav">
     <ul class="mobile-nav__item-list">
         <li class="mobile-nav__item">
-            <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+            <button >App Name</button>
         </li>
         <% if (admin) { %>
             <li class="main-header__item">
@@ -69,16 +64,13 @@
         <% } %>
         <% if (staff) { %>
             <li class="main-header__item">
-                <a class="<%= path === 'courses' ? 'active' : '' %>" href="/staff/materials?token=<%= token  %>">Courses</a>
-            </li>
-            <li class="main-header__item">
-                <a class="<%= path === 'materials' ? 'active' : '' %>" href="/staff?token=<%= token  %>">Materials</a>
+                <a class="<%= path === 'staff' ? 'active' : '' %>" href="/staff?token=<%= token  %>&level=<%= level %>$userId=<% userId %>">Courses</a>
             </li>
             
         <% } %>  
         <% if (user) {%>
             <li class="main-header__item">
-                <a class="<%= path === 'materials' ? 'active' : '' %>" href="/user/materials?token=<%= token  %>">Material</a>
+                <a class="<%= path === 'user' ? 'active' : '' %>" href="/user?token=<%= token  %>&level=<%= level %>">Courses</a>
             </li>
         <% } %>
         <% if (!isLoggedIn) { %>
@@ -90,9 +82,7 @@
             </li>
         <% } else { %>
             <li class="mobile-nav__item">
-                <form action="/logout" method="post">
-                    <button type="submit">Logout</button>
-                </form>
+                <button id="logout" type="submit">Logout</button>
             </li>
         <% } %>
     </ul>

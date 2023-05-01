@@ -112,7 +112,48 @@
             <button id="add-course" onclick="addCourse()" class="btn">Add Course</button>
           </div>    
           
-      </div>  
+      </div>
+      
+      <div class="modal" id="assign">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Assign Course</h3>
+            <span class="close">&times;</span>
+          </div>
+          <div class="form-control">
+            <label for="staff">Assign to<sup>*</sup></label>
+            <select name="staff" id="staff-value">
+              <option value="">Select Staff</option>
+              <% for (let staff of staffs) { %>
+                  <option value="<%= staff._id %>"><%= staff.name %></option>
+              <% } %>
+            </select>
+          </div>
+          <button id="assign-staff" onclick="assignStaff()" class="btn">Assign Staff</button>
+        </div>
+        
+      </div>
+
+      <div class="modal" id="material">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Add Material</h3>
+            <span class="close">&times;</span>
+          </div>
+          <div class="form-control">
+            <label for="material">Upload File<sup>*</sup></label>
+            <input 
+                type="file" 
+                name="material-value" 
+                id="material-value"
+                accept=".doc,.pdf,.png"
+            />
+          </div>
+          <p>Max Material Size is 100kb</p>
+          <button id="add-material" onclick="addMaterial()" class="btn">Add Material</button>
+        </div>
+        
+      </div>
     </main>
 
     <script src="/js/helpers.js"></script>
