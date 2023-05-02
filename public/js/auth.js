@@ -5,7 +5,7 @@
 
 // // Get the root domain URL
 // const rootDomain = domain.split('.').slice(-2).join('.');
-// const BASEURL = rootDomain
+// const BASEURL = 'http://localhost:3030'
 const BASEURL='https://e-learning-manangement-production.up.railway.app'
 async function login() {
     const btn = document.getElementsByClassName('btn')
@@ -21,6 +21,7 @@ async function login() {
         }
     })
     if(!res.ok) {
+        console.log(res)
         console.log('Something went wrong')
         addErrorMessage('Something went wrong', true)
         btn[0].innerHTML = 'Login'
@@ -50,6 +51,7 @@ async function login() {
         return
     }
     } catch (error) {
+        console.log(error)
         addErrorMessage('Something went wrong', true)
         btn[0].innerHTML = 'Login'
     }
