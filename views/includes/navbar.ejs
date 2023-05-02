@@ -75,14 +75,14 @@
         <% } %>
         <% if (!isLoggedIn) { %>
             <li class="mobile-nav__item">
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/login">Login</a>
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/auth/login">Login</a>
             </li>
             <li class="mobile-nav__item">
-                <a class="<%= path === '/auth/signup' ? 'active' : '' %>" href="/signup">Signup</a>
+                <a class="<%= path === '/auth/signup' ? 'active' : '' %>" href="/auth/signup">Signup</a>
             </li>
         <% } else { %>
-            <li class="mobile-nav__item">
-                <button id="logout" type="submit">Logout</button>
+            <li id="logout" class="mobile-nav__item">
+                <button  type="submit">Logout</button>
             </li>
         <% } %>
     </ul>

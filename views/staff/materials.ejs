@@ -25,13 +25,8 @@
                                      Name: <%= course.name %>
                                   </h1>
                               </header>
-                              <div class="card__content">
-                                  <h2 class="product__price">
-                                    Name:  <%= material.url %>
-                                  </h2>
-                              </div>
                               <div class="card__actions">
-                                  <a class="btn" href="/uploads/<%= material.url  %>"  >View Material </a>
+                                  <a class="btn" href="<%= material.url  %>"  >View Material </a>
                               </div>
                           </article>
                           <% } %>
@@ -55,10 +50,11 @@
                     type="file" 
                     name="material-value" 
                     id="material-value"
-                    accept=".doc,.pdf,.png"
+                    accept=".doc, .docx, .png .jpeg .jpg"
                 />
               </div>
-              <p>Max Material Size is 100kb</p>
+              <p>*Max Material Size is 100kb</p>
+                <p>*you can only upload image and doc files</p>
               <button id="add-material" onclick="addMaterial()" class="btn">Add Material</button>
             </div>
             

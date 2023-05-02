@@ -1,4 +1,4 @@
 export interface AddMaterialDto {
-    url: string
+    file: Express.Multer.File
     course: string
 }

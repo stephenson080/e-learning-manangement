@@ -76,7 +76,7 @@ export async function addCourseMaterial(req: Request, res: Response) {
   try {
     if (!req.file) throw new Error("No File uploaded");
     await materialServices.addMaterial({
-      url: req.file.filename,
+      file: req.file,
       course: req.body.course,
     });
     res.json({

@@ -1,5 +1,12 @@
-// const BASEURL = 'http://localhost:3030'
-const BASEURL = 'https://e-learning-manangement-production.up.railway.app'
+const url = window.location.href;
+
+// Extract the domain name
+const domain = url.split(/[/?#]/)[0];
+
+// Get the root domain URL
+const rootDomain = domain.split('.').slice(-2).join('.');
+const BASEURL = rootDomain
+// const BASEURL = 'https://e-learning-manangement-production.up.railway.app'
 
 let currentCourse = ''
 

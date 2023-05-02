@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, Request } from "express";
 import {join} from 'path'
 import {urlencoded, json} from 'body-parser'
 import multer from 'multer'
@@ -8,7 +8,12 @@ import adminRouter from "./routes/admin.route";
 import userRouter from "./routes/user.route";
 import staffRouter from "./routes/staff.route";
 
+import { get404Page, get500Page } from "./controllers/error.controller";
+import { getLoginPage } from "./controllers/auth.controller";
+
 import connectDatabase from "./database/index.db";
+
+
 
 
 
@@ -46,18 +51,26 @@ export default class App {
     this.app.use('/img', express.static(join(__dirname, '..', 'public', 'img')))
     this.app.use('/uploads', express.static(join(__dirname, '..', 'uploads')))
 
+    this.app.use('/', (req, res) => {
+      getLoginPage(req, res)
+    })
     this.app.use('/auth', authRouter)
     this.app.use('/admin', adminRouter)
     this.app.use('/user', userRouter)
     this.app.use('/staff', staffRouter)
+    this.app.use('/500', get500Page)
+    this.app.use(get404Page)
+    this.app.use((err: any, req : any, res : any, next :any) => {
+      get500Page(req, res, next)
+    })
 
   }
 
   async start() {
     try {
-      this.app.get("/", (_req, _res) => {
-        _res.redirect('/auth/login')
-      });
+      // this.app.get("/", (_req, _res) => {
+      //   _res.redirect('/auth/login')
+      // });
       await connectDatabase()
       // await seedRecords()
       this.app.listen(this.PORT, () => {
