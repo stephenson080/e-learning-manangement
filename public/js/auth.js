@@ -1,12 +1,12 @@
-const url = window.location.href;
+// const url = window.location.href;
 
-// Extract the domain name
-const domain = url.split(/[/?#]/)[0];
+// // Extract the domain name
+// const domain = url.split(/[/?#]/)[0];
 
-// Get the root domain URL
-const rootDomain = domain.split('.').slice(-2).join('.');
-const BASEURL = rootDomain
-// const BASEURL='https://e-learning-manangement-production.up.railway.app'
+// // Get the root domain URL
+// const rootDomain = domain.split('.').slice(-2).join('.');
+// const BASEURL = rootDomain
+const BASEURL='https://e-learning-manangement-production.up.railway.app'
 async function login() {
     const btn = document.getElementsByClassName('btn')
     try {
