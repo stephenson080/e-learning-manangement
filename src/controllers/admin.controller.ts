@@ -186,6 +186,7 @@ export async function addCourseMaterial(req: Request, res: Response){
       message: 'Material Added!'
     });
   } catch (error: any) {
+    console.log(error)
     res.json({
       status: false,
       message: error.message

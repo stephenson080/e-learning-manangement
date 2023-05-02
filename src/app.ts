@@ -2,6 +2,7 @@ import express, { Application, Request } from "express";
 import {join} from 'path'
 import {urlencoded, json} from 'body-parser'
 import multer from 'multer'
+const cors = require('cors')
 
 import authRouter from "./routes/auth.route";
 import adminRouter from "./routes/admin.route";
@@ -31,6 +32,8 @@ export default class App {
   private setup(){
     this.app.set('views', join(__dirname, '..', 'views'));
     this.app.set('view engine', 'ejs');
+
+    this.app.use(cors())
 
     this.app.use(urlencoded({extended: false}))
     this.app.use(json())

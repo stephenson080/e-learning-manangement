@@ -15,6 +15,7 @@ export default class MaterialService{
             const newMaterial = new Material({url: uploadedFile.url, course: addMaterialDto.course})
             await newMaterial.save() 
         } catch (error) {
+            console.log(error, 'mater')
             throw error
         }
     }

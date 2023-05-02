@@ -5,7 +5,7 @@
 
 // // Get the root domain URL
 // const rootDomain = domain.split('.').slice(-2).join('.');
-// const BASEURL = rootDomain
+// const BASEURL = 'http://localhost:3030'
 const BASEURL = 'https://e-learning-manangement-production.up.railway.app'
 
 let currentCourse = ''
@@ -330,6 +330,7 @@ async function addMaterial() {
         btn.innerHTML = 'Add Material'
         alert(resData.message)
     } catch (error) {
+        console.log(error)
         btn.innerHTML = 'Add Material'
         alert('Something went wrong')
     }

@@ -29,6 +29,7 @@ export default class CloudinaryService {
                   resource_type: 'auto',
                 },
                 (err, result) => {
+                    console.log(err, result, 'dsd')
                   if (err) rej(err);
                   res(result!);
                 },

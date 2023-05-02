@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/main.js",
-    "dev": "tsc && nodemon dist/main.js",
+    "dev": "nodemon dist/main.js",
     "build": "tsc"
   },
   "author": "",
